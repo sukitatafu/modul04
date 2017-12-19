@@ -11,7 +11,7 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
 
     TextView tvNomorAnggota, tvNamaAnggota, tvEmail, tvTelepon;
-    TextView tvJudul, tvAuthor, tvTahun, tvPublisher, tvTgPinjam, tvTgKembali;
+    TextView tvJudul, tvAuthor, tvTahun, tvPublisher, tvTgPinjam, tvTgKembali,tv_tglkembali,tv_tglpinjam;
     LinearLayout vgDataPinjam;
     Members members;
     @Override
@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initLayout();
+
         members = getIntent().getParcelableExtra("members");
         if( members == null ){
             Intent intent = new Intent(MainActivity.this, infoActivity.class);
@@ -40,7 +41,14 @@ public class MainActivity extends AppCompatActivity {
                 vgDataPinjam.setVisibility(View.VISIBLE);
             } else {
                 tvJudul.setText("Tidak ada Pinjaman");
-                vgDataPinjam.setVisibility(View.GONE);
+                vgDataPinjam.setVisibility(View.VISIBLE);
+                tvTgPinjam.setText(" ");
+                tvTgKembali.setText(" ");
+                tvAuthor.setText(" ");
+                tvPublisher.setText(" ");
+                tv_tglkembali.setText(" ");
+                tv_tglpinjam.setText(" ");
+                tvTahun.setText(" ");
             }
         }
     }
@@ -60,6 +68,8 @@ public class MainActivity extends AppCompatActivity {
         tvNamaAnggota.setText("");
         tvEmail.setText("");
         tvTelepon.setText("");
+        tv_tglkembali=(TextView)findViewById(R.id.tv_tglkembali);
+        tv_tglpinjam=(TextView)findViewById(R.id.tv_tglpinjam);
         vgDataPinjam.setVisibility(View.INVISIBLE);
     }
 }
